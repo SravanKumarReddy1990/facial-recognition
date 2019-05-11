@@ -71,6 +71,8 @@ def detect_faces_in_image(file_stream,train_dir, model_save_path=None, n_neighbo
     for class_dir in os.listdir(train_dir):
         if not os.path.isdir(os.path.join(train_dir, class_dir)):
             continue
+
+
         s1=[]
         # Loop through each training image for the current person
         for img_path in image_files_in_folder(os.path.join(train_dir, class_dir)):
