@@ -73,7 +73,7 @@ def detect_faces_in_image(file_stream,train_dir, model_save_path=None, n_neighbo
         # Loop through each training image for the current person
         for img_path in os.listdir(train_dir):
             full_file_path = os.path.join("knn_examples/test", img_path)
-            image = face_recognition.load_image_file("{}.jpg".full_file_path)
+            image = face_recognition.load_image_file(img_pth="{}.jpg".full_file_path)
             face_bounding_boxes = face_recognition.face_encodings(image)
 
             # Load the uploaded image file
