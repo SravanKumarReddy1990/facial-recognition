@@ -57,9 +57,9 @@ def upload_image():
 
             # STEP 2: Using the trained classifier, make predictions for unknown images
             #for image_file in os.listdir("knn_examples/test"):
-            #full_file_path = os.path.join("knn_examples/test", image_file)
+            	#full_file_path = os.path.join("knn_examples/test", image_file)
 
-            print("Looking for faces in {}".format(image_file))
+            print("Looking for faces in {}".format(file.filename))
 
             # Find all people in the image using a trained classifier model
             # Note: You can pass in either a classifier file name or a classifier model instance
