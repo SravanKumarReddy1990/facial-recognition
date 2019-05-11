@@ -100,8 +100,7 @@ def detect_faces_in_image(file_stream,train_dir, model_save_path=None, n_neighbo
                     #users = json.dumps(result)
                     s1.append(result)
 	
-    return jsonData=json.dumps(s1)
-
+    return json.dumps(s1)
 
 if __name__ == "__main__":
     app.run(use_reloader=True, debug=True)
