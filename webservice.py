@@ -67,7 +67,7 @@ def upload_image():
 
 
 def detect_faces_in_image(file_stream,train_dir, model_save_path=None, n_neighbors=None, knn_algo='ball_tree', verbose=False):
-    users=[]
+    s1=[]
     for class_dir in os.listdir(train_dir):
         if not os.path.isdir(os.path.join(train_dir, class_dir)):
             continue
@@ -98,7 +98,7 @@ def detect_faces_in_image(file_stream,train_dir, model_save_path=None, n_neighbo
                     "is_picture_of": img_path
                 }
                 users = json.dumps(result)
-                s1 = json.loads(users)
+                s1.append(users)
     return jsonify(s1)
 
 if __name__ == "__main__":
