@@ -1,1 +1,1 @@
-web: gunicorn webservice:app --workers=7 --timeout=1200 --log-level=debug --access-logfile - error-logfile -"
+web: gunicorn webservice:app --timeout 15 --keep-alive 5 --log-level debug
