@@ -1,5 +1,5 @@
-pip install --upgrade setuptools
-pip install --upgrade distribute
+pip install setuptools
+pip install distribute
 face_recognition_models
 Click>=6.0
 dlib>=19.3.0
