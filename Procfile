@@ -1,1 +1,1 @@
-web: python code.py gettingstarted.wsgi --log-file -
+web: python code.py gettingstarted.wsgi  --log-file -
