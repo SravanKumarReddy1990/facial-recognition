@@ -61,7 +61,7 @@ def upload_image():
 
         	# Print results on the console
         	for name, (top, right, bottom, left) in predictions:
-            	print("- Found {} at ({}, {})".format(name, left, top))
+            		print("- Found {} at ({}, {})".format(name, left, top))
 
         	# Display results overlaid on an image
         	#show_prediction_labels_on_image(os.path.join("knn_examples/test", image_file), predictions)
