@@ -21,6 +21,7 @@ from flask import Flask, jsonify, request, redirect
 import math
 from sklearn import neighbors
 import os
+import json
 import os.path
 import pickle
 from PIL import Image, ImageDraw
@@ -66,11 +67,11 @@ def upload_image():
 
 
 def detect_faces_in_image(file_stream,train_dir, model_save_path=None, n_neighbors=None, knn_algo='ball_tree', verbose=False):
-
+    users=[]
     for class_dir in os.listdir(train_dir):
         if not os.path.isdir(os.path.join(train_dir, class_dir)):
             continue
-
+        
         # Loop through each training image for the current person
         for img_path in image_files_in_folder(os.path.join(train_dir, class_dir)):
             image = face_recognition.load_image_file(img_path)
@@ -96,7 +97,8 @@ def detect_faces_in_image(file_stream,train_dir, model_save_path=None, n_neighbo
                     "face_found_in_image": face_found,
                     "is_picture_of": img_path
                 }
-    return jsonify(result)
+                users = json.loads(result)
+    return jsonify(users)
 
 if __name__ == "__main__":
     app.run(use_reloader=True, debug=True)
