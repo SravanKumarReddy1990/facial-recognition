@@ -1,7 +1,7 @@
 django
 gunicorn
 django-heroku
-lpthw.web
+requests
 cmake
 face_recognition_models
 Click>=6.0
