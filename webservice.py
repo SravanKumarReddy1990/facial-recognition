@@ -18,8 +18,8 @@
 
 import face_recognition
 from flask import Flask, jsonify, request, redirect
-from .facerecognitionknn import train
-from .facerecognitionknn import predict
+from . import train
+from . import predict
 
 # You can change this to any folder on your system
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
@@ -46,8 +46,7 @@ def upload_image():
 
         if file and allowed_file(file.filename):
             print("Training KNN classifier...")
-            classifier = train("knn_examples/train", model_save_path="trained_knn_model.clf",
-                                                  n_neighbors=2)
+            classifier = train("knn_examples/train", model_save_path="trained_knn_model.clf",n_neighbors=2)
             print("Training complete!")
 
             # STEP 2: Using the trained classifier, make predictions for unknown images
