@@ -110,4 +110,4 @@ def detect_faces_in_image(file_stream):
     return jsonify(result)
 
 if __name__ == "__main__":
-    app.run(host='localost', port=5001, debug=True)
+    app.run(host='127.0.0.1', port=5001, debug=True)
