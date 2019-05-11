@@ -63,7 +63,8 @@ def upload_image():
             # Find all people in the image using a trained classifier model
             # Note: You can pass in either a classifier file name or a classifier model instance
             dir_path = os.path.dirname(os.path.realpath(__file__))
-            predictions = predict(file, model_path="{}/trained_knn_model.clf".format(dir_path))
+            string_in_string = "{}/trained_knn_model.clf".format(dir_path)
+            predictions = predict(file, model_path=string_in_string)
 
             # Print results on the console
             for name, (top, right, bottom, left) in predictions:
