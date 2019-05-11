@@ -96,7 +96,7 @@ def detect_faces_in_image(file_stream,train_dir, model_save_path=None, n_neighbo
                     "face_found_in_image": face_found,
                     "is_picture_of": img_path
                 }
-         return jsonify(result)
+    return jsonify(result)
 
 if __name__ == "__main__":
     app.run(use_reloader=True, debug=True)
