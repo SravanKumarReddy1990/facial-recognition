@@ -1,7 +1,6 @@
-web.py==0.40-dev1
-Jinja2==2.6
-Werkzeug==0.8.3
-gunicorn==0.14.2
+django
+gunicorn
+django-heroku
 lpthw.web
 cmake
 face_recognition_models
