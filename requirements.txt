@@ -2,6 +2,7 @@ django
 gunicorn
 django-heroku
 requests
+scikit-learn
 cmake
 face_recognition_models
 Click>=6.0
