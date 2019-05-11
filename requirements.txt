@@ -1,3 +1,4 @@
+lpthw.web
 cmake
 face_recognition_models
 Click>=6.0
