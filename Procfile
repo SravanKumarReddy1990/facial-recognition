@@ -1,1 +1,1 @@
-web: python code.py gettingstarted.wsgi  --log-file -
+web: gunicorn xander1990:app
