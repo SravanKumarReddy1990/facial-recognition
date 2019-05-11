@@ -1,1 +1,1 @@
-web: gunicorn web_service_example:app
+web: gunicorn manage:app
