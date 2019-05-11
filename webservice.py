@@ -74,7 +74,7 @@ def detect_faces_in_image(file_stream,train_dir, model_save_path=None, n_neighbo
         # Loop through each training image for the current person
         for img_path in image_files_in_folder(os.path.join(train_dir, class_dir)):
             image = face_recognition.load_image_file(img_path)
-            face_bounding_boxes = face_recognition.face_locations(image)
+            face_bounding_boxes = face_recognition.face_encodings(image)
 
             # Load the uploaded image file
             img = face_recognition.load_image_file(file_stream)
