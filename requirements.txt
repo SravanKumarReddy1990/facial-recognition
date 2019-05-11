@@ -1,4 +1,6 @@
-setuptools
+libgtk-3-dev
+libboost-all-dev
+sciKit-Image
 face_recognition_models
 Click>=6.0
 dlib>=19.3.0
