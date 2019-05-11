@@ -1,1 +1,1 @@
-web: python code.py 0.0.0.0:5000
+web: python code.py runserver0.0.0.0:5000
