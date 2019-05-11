@@ -1,1 +1,1 @@
-web: gunicorn web_service_example:xander1990
+web: python web_service_example.py
