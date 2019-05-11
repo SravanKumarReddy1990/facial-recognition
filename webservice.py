@@ -18,7 +18,8 @@
 
 import face_recognition
 from flask import Flask, jsonify, request, redirect
-from .facerecognitionknn import FaceRecognitionKnn
+from .facerecognitionknn import train
+from .facerecognitionknn import predict
 
 # You can change this to any folder on your system
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
@@ -44,9 +45,8 @@ def upload_image():
             return redirect(request.url)
 
         if file and allowed_file(file.filename):
-            facerecognitionfnn = FaceRecognitionKnn();
             print("Training KNN classifier...")
-            classifier = facerecognitionfnn.train("knn_examples/train", model_save_path="trained_knn_model.clf",
+            classifier = train("knn_examples/train", model_save_path="trained_knn_model.clf",
                                                   n_neighbors=2)
             print("Training complete!")
 
@@ -58,7 +58,7 @@ def upload_image():
 
             # Find all people in the image using a trained classifier model
             # Note: You can pass in either a classifier file name or a classifier model instance
-            predictions = facerecognitionfnn.predict(full_file_path, model_path="trained_knn_model.clf")
+            predictions = predict(full_file_path, model_path="trained_knn_model.clf")
 
             # Print results on the console
             for name, (top, right, bottom, left) in predictions:
