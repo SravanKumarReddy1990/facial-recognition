@@ -68,12 +68,13 @@ def upload_image():
 
 def detect_faces_in_image(file_stream,train_dir, model_save_path=None, n_neighbors=None, knn_algo='ball_tree', verbose=False):
     
-   
+    for class_dir in os.listdir(train_dir):
+        if not os.path.isdir(os.path.join(train_dir, class_dir)):
+            continue
         s1=[]
         # Loop through each training image for the current person
-        for img_path in os.listdir(train_dir):
-            full_file_path = os.path.join("knn_examples/test", img_path)
-            image = face_recognition.load_image_file("{}.jpg".format(full_file_path))
+        for img_path in image_files_in_folder(os.path.join(train_dir, class_dir)):
+            image = face_recognition.load_image_file(img_path)
             face_bounding_boxes = face_recognition.face_encodings(image)
 
             # Load the uploaded image file
@@ -98,8 +99,8 @@ def detect_faces_in_image(file_stream,train_dir, model_save_path=None, n_neighbo
                 }
                 #users = json.dumps(result)
                 s1.append(result)
-    
-        return jsonify(results=json.dumps(s1))
+	
+    return jsonify((s1))
 
 if __name__ == "__main__":
     app.run(use_reloader=True, debug=True)
