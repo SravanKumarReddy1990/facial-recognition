@@ -70,7 +70,7 @@ def detect_faces_in_image(file_stream,train_dir, model_save_path=None, n_neighbo
     s1=[]
     #for class_dir in os.listdir(train_dir):
     if len(file_stream) > 0:
-         continue
+        continue
         
         # Loop through each training image for the current person
         for img_path in image_files_in_folder(os.path.join(train_dir, class_dir)):
