@@ -60,10 +60,10 @@ def upload_image():
             	#full_file_path = os.path.join("knn_examples/test", image_file)
 
             print("Looking for faces in {}".format(file.filename))
-
+	    dir_path = os.path.dirname(os.path.realpath(__file__))
             # Find all people in the image using a trained classifier model
             # Note: You can pass in either a classifier file name or a classifier model instance
-            predictions = predict(file, model_path="./trained_knn_model.clf")
+            predictions = predict(file, model_path=dir_path+"/trained_knn_model.clf")
 
             # Print results on the console
             for name, (top, right, bottom, left) in predictions:
