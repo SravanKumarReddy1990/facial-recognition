@@ -91,12 +91,12 @@ def detect_faces_in_image(file_stream,train_dir, model_save_path=None, n_neighbo
                 if match_results[0]:
                     is_obama = True
 
-             # Return the result as json
-             result = {
-                 "face_found_in_image": face_found,
-                 "is_picture_of_obama": is_obama
-             }
-    return jsonify(result)
+                # Return the result as json
+                result = {
+                    "face_found_in_image": face_found,
+                    "is_picture_of": img_path
+                }
+         return jsonify(result)
 
 if __name__ == "__main__":
     app.run(use_reloader=True, debug=True)
