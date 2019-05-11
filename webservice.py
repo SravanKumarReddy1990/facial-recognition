@@ -18,8 +18,8 @@
 
 import face_recognition
 from flask import Flask, jsonify, request, redirect
-from . import train
-from . import predict
+from facerecognitionknn import train
+from facerecognitionknn import predict
 
 # You can change this to any folder on your system
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
