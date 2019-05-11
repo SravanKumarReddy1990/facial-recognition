@@ -110,4 +110,4 @@ def detect_faces_in_image(file_stream):
     return jsonify(result)
 
 if __name__ == "__main__":
-    app.run(host='xander1990.herokuapp.com', port=5001, debug=True)
+    app.run(host='localost', port=5001, debug=True)
