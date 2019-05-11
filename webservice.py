@@ -18,6 +18,7 @@
 
 import face_recognition
 from flask import Flask, jsonify, request, redirect
+from facerecognitionfnn import FaceRecognitionKnn
 
 # You can change this to any folder on your system
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
@@ -43,8 +44,27 @@ def upload_image():
             return redirect(request.url)
 
         if file and allowed_file(file.filename):
-            # The image file seems valid! Detect faces and return the result.
-            return detect_faces_in_image(file)
+		facerecognitionfnn=FaceRecognitionKnn();
+           	print("Training KNN classifier...")
+    		classifier = facerecognitionfnn.train("knn_examples/train", model_save_path="trained_knn_model.clf", n_neighbors=2)
+    		print("Training complete!")
+
+    		# STEP 2: Using the trained classifier, make predictions for unknown images
+    		for image_file in os.listdir("knn_examples/test"):
+        	full_file_path = os.path.join("knn_examples/test", image_file)
+
+        	print("Looking for faces in {}".format(image_file))
+
+        	# Find all people in the image using a trained classifier model
+        	# Note: You can pass in either a classifier file name or a classifier model instance
+        	predictions = facerecognitionfnn.predict(full_file_path, model_path="trained_knn_model.clf")
+
+        	# Print results on the console
+        	for name, (top, right, bottom, left) in predictions:
+            	print("- Found {} at ({}, {})".format(name, left, top))
+
+        	# Display results overlaid on an image
+        	#show_prediction_labels_on_image(os.path.join("knn_examples/test", image_file), predictions)
 
     # If no valid image file was uploaded, show the file upload form:
     return '''
