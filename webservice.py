@@ -97,8 +97,8 @@ def detect_faces_in_image(file_stream,train_dir, model_save_path=None, n_neighbo
                     "face_found_in_image": face_found,
                     "is_picture_of": img_path
                 }
-                users = json.loads(result)
-                s1 = json.dumps(users)
+                users = json.dumps(result)
+                s1 = json.loads(users)
     return jsonify(s1)
 
 if __name__ == "__main__":
