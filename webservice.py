@@ -31,8 +31,8 @@ from face_recognition.face_recognition_cli import image_files_in_folder
 # You can change this to any folder on your system
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
-app = Flask(__name__)
-
+#app = Flask(__name__)
+app = Flask(__name__, template_folder='template')
 
 def allowed_file(filename):
     return '.' in filename and \
