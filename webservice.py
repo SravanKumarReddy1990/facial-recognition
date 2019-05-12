@@ -103,7 +103,7 @@ def train(imgfile,train_dir, model_save_path=None, n_neighbors=None, knn_algo='b
 
         # Loop through each training image for the current person
     #    for img_path in image_files_in_folder(os.path.join(train_dir, class_dir)):
-    image = face_recognition.load_image_file(img_path)
+    image = face_recognition.load_image_file(imgfile)
     face_bounding_boxes = face_recognition.face_locations(image)
 
     if len(face_bounding_boxes) != 1:
