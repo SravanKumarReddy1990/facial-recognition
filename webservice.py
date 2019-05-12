@@ -21,6 +21,7 @@ from flask import Flask, jsonify, request, redirect
 import math
 from sklearn import neighbors
 import os
+import io
 import json
 import os.path
 import pickle
