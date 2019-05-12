@@ -54,7 +54,7 @@ def upload_image():
              print("Training KNN classifier...")
              classifier = train("knn_examples/train", model_save_path="trained_knn_model.clf", n_neighbors=2)
              print("Training complete!")
-
+             s1=[]
              # STEP 2: Using the trained classifier, make predictions for unknown images
              for image_file in os.listdir("knn_examples/test"):
                  full_file_path = os.path.join("knn_examples/test", image_file)
@@ -66,7 +66,7 @@ def upload_image():
                  predictions = predict(full_file_path, model_path="trained_knn_model.clf")
 
                  # Print results on the console
-                 s1=[]
+                 
                  for name, (top, right, bottom, left) in predictions:
                      print("- Found {} at ({}, {})".format(name, left, top))
                      result = {
