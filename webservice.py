@@ -33,7 +33,7 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 
 #app = Flask(__name__)
-app = Flask(__name__, template_folder='templates')
+app = Flask(__name__, template_folder='templates',static_url_path = "", static_folder = 'knn_examples/train/sravan')
 PEOPLE_FOLDER = os.path.join('knn_examples', 'train','sravan')
 app.config['UPLOAD_FOLDER'] = PEOPLE_FOLDER
 
@@ -89,7 +89,7 @@ def upload_image():
                      s1.append(result)
              for item in s1: 
                  full_filename=item["face_found_in_image"]
-                 return render_template("index.html", user_image = os.path.join(app.config['UPLOAD_FOLDER'], full_filename))
+                 return render_template("index.html", user_image =  full_filename)
              #return detect_faces_in_image(file,"knn_examples/train", model_save_path="trained_knn_model.clf", n_neighbors=2)
 
     # If no valid image file was uploaded, show the file upload form:
