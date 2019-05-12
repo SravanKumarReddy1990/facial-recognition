@@ -113,7 +113,7 @@ def train(imgfile,train_dir, model_save_path=None, n_neighbors=None, knn_algo='b
         else:
             # Add face encoding for current image to the training set
             X.append(face_recognition.face_encodings(image, known_face_locations=face_bounding_boxes)[0])
-            y.append("client")
+            y.append("client/client")
 
     # Determine how many neighbors to use for weighting in the KNN classifier
     if n_neighbors is None:
