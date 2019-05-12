@@ -78,7 +78,7 @@ def detect_faces_in_image(file_stream,train_dir, model_save_path=None, n_neighbo
             X = []
             y = []
             image = face_recognition.load_image_file(img_path)
-            face_bounding_boxes = face_recognition.face_encodings(image)
+            face_bounding_boxes = face_recognition.face_locations(image)
             if len(face_bounding_boxes) != 1:
                 # If there are no people (or too many people) in a training image, skip the image.
                 if verbose:
