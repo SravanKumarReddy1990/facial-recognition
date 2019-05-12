@@ -78,7 +78,9 @@ def upload_image():
                      result = {
                        "face_found_in_image": name,
                        "is_picture_of": left,
-                       "top":top
+                       "top":top,
+                       "right":right,
+                       "bottom":bottom
                      }
                      #users = json.dumps(result)
                      s1.append(result)
@@ -119,7 +121,7 @@ def train(train_dir, model_save_path=None, n_neighbors=None, knn_algo='ball_tree
             else:
                 # Add face encoding for current image to the training set
                 X.append(face_recognition.face_encodings(image, known_face_locations=face_bounding_boxes)[0])
-                y.append(class_dir)
+                y.append(img_path)
 
     # Determine how many neighbors to use for weighting in the KNN classifier
     if n_neighbors is None:
@@ -166,7 +168,7 @@ def predict(X_img_path, knn_clf=None, model_path=None, distance_threshold=0.6):
     # Use the KNN model to find the best matches for the test face
     closest_distances = knn_clf.kneighbors(faces_encodings, n_neighbors=1)
     are_matches = [closest_distances[0][i][0] <= distance_threshold for i in range(len(X_face_locations))]
-
+    
     # Predict classes and remove classifications that aren't within the threshold
     return [(pred, loc) if rec else ("unknown", loc) for pred, loc, rec in zip(knn_clf.predict(faces_encodings), X_face_locations, are_matches)]
 
