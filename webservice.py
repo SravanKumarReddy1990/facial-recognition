@@ -104,9 +104,9 @@ def detect_faces_in_image(file_stream,train_dir, model_save_path=None, n_neighbo
             #img = face_recognition.load_image_file(file_stream)
             # Get face encodings for any faces in the uploaded image
             #unknown_face_encodings = face_recognition.face_encodings(img)
-            #if knn_clf is None:
-            #    with open(model_save_path, 'rb') as f:
-            #       knn_clf = pickle.load(f)
+            if knn_clf is None:
+                with open(model_save_path, 'rb') as f:
+                   knn_clf = pickle.load(f)
 
             # Load image file and find face locations
             X_img = face_recognition.load_image_file(file_stream)
