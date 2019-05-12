@@ -17,7 +17,7 @@
 # $ pip3 install flask
 
 import face_recognition
-from flask import Flask, jsonify, request, redirect
+from flask import Flask, jsonify, request, redirect, render_template
 import math
 from sklearn import neighbors
 import os
