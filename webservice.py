@@ -77,7 +77,7 @@ def upload_image():
                      #users = json.dumps(result)
                      s1.append(result)
 	
-              return jsonify(s1)
+             return jsonify(s1)
              #return detect_faces_in_image(file,"knn_examples/train", model_save_path="trained_knn_model.clf", n_neighbors=2)
 
     # If no valid image file was uploaded, show the file upload form:
