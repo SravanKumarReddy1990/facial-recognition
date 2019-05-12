@@ -53,10 +53,8 @@ def upload_image():
         if file and allowed_file(file.filename):
              #open("knn_examples/test/sample.jpg", 'wb')
              with open("knn_examples/test/sample.jpg", 'wb') as f:
-                 for block in file.read().iter_content(1024):
-                     if not block:
-                        break
-                     f.write(block)
+                 image = Image.open(io.BytesIO(file.read()))
+                 image.save(f)
 
              print("Training KNN classifier...")
              classifier = train("knn_examples/train", model_save_path="trained_knn_model.clf", n_neighbors=2)
