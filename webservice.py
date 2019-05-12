@@ -65,7 +65,7 @@ def upload_image():
     '''
 
 
-def detect_faces_in_image(file_stream,train_dir, model_save_path=None, n_neighbors=None, knn_algo='ball_tree', verbose=False):
+def detect_faces_in_image(file_stream,train_dir, model_save_path=None, n_neighbors=None, knn_algo='ball_tree', verbose=False, distance_threshold=0.6):
     
     s1=[]
     for class_dir in os.listdir(train_dir):
