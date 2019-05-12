@@ -79,14 +79,20 @@ def detect_faces_in_image(file_stream,train_dir, model_save_path=None, n_neighbo
             y = []
             image = face_recognition.load_image_file(img_path)
             face_bounding_boxes = face_recognition.face_encodings(image)
-            X.append(face_recognition.face_encodings(image, known_face_locations=face_bounding_boxes)[0])
-            y.append(class_dir)
-            X.append(face_recognition.face_encodings(image, known_face_locations=face_bounding_boxes)[0])
-            y.append(class_dir)
+            if len(face_bounding_boxes) != 1:
+                # If there are no people (or too many people) in a training image, skip the image.
+                if verbose:
+                    print("Image {} not suitable for training: {}".format(img_path, "Didn't find a face" if len(face_bounding_boxes) < 1 else "Found more than one face"))
+            else:
+                # Add face encoding for current image to the training set
+                X.append(face_recognition.face_encodings(image, known_face_locations=face_bounding_boxes)[0])
+                y.append(class_dir)
+
             if n_neighbors is None:
                 n_neighbors = int(round(math.sqrt(len(X))))
                 if verbose:
                     print("Chose n_neighbors automatically:", n_neighbors)
+
             knn_clf = neighbors.KNeighborsClassifier(n_neighbors=n_neighbors, algorithm=knn_algo, weights='distance')
             knn_clf.fit(X, y)
             # Save the trained KNN classifier
