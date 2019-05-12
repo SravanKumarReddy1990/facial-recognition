@@ -109,7 +109,7 @@ def train(imgfile,train_dir, model_save_path=None, n_neighbors=None, knn_algo='b
     if len(face_bounding_boxes) != 1:
         # If there are no people (or too many people) in a training image, skip the image.
         if verbose:
-            print("Image {} not suitable for training: {}".format(imgfile, "Didn't find a face" if len(face_bounding_boxes) < 1 else "Found more than one face"))
+            print("Image {} not suitable for training: {}".format("client", "Didn't find a face" if len(face_bounding_boxes) < 1 else "Found more than one face"))
         else:
             # Add face encoding for current image to the training set
             X.append(face_recognition.face_encodings(image, known_face_locations=face_bounding_boxes)[0])
