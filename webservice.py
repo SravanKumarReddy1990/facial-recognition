@@ -51,8 +51,8 @@ def upload_image():
             return redirect(request.url)
 
         if file and allowed_file(file.filename):
-             open("knn_examples/test/sample.jpg", 'wb')
-             with open(file, 'wb') as f:
+             #open("knn_examples/test/sample.jpg", 'wb')
+             with open("knn_examples/test/sample.jpg", 'wb') as f:
                  for block in file.read().iter_content(1024):
                      if not block:
                         break
