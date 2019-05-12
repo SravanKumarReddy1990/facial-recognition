@@ -91,7 +91,7 @@ def detect_faces_in_image(file_stream,train_dir, model_save_path=None, n_neighbo
             # See if the first face in the uploaded image matches the known face of Obama
             match_results = face_recognition.compare_faces([unknown_face_encodings], face_bounding_boxes[0])
             print(match_results[0])
-            if match_results[0]:
+            if (match_results[0]==True).all():
                 is_obama = True
                 # Return the result as json
                 result = {
