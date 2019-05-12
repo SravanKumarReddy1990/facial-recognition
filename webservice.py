@@ -79,7 +79,7 @@ def upload_image():
                  for name, (top, right, bottom, left) in predictions:
                      print("- Found {} at ({}, {})".format(name, left, top))
                      result = {
-                       "face_found_in_image": image_file,
+                       "face_found_in_image": name,
                        "is_picture_of": left,
                        "top":top,
                        "right":right,
