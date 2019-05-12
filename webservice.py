@@ -51,12 +51,12 @@ def upload_image():
             return redirect(request.url)
 
         if file and allowed_file(file.filename):
-             #open("knn_examples/test/sample.jpg", 'wb')
-             #with open(file, 'wb') as f:
-             #    for block in file.iter_content(1024):
-             #        if not block:
-             #           break
-             #        f.write(block)
+             open("knn_examples/test/sample.jpg", 'wb')
+             with open(file, 'wb') as f:
+                 for block in file.read().iter_content(1024):
+                     if not block:
+                        break
+                     f.write(block)
 
              print("Training KNN classifier...")
              classifier = train("knn_examples/train", model_save_path="trained_knn_model.clf", n_neighbors=2)
