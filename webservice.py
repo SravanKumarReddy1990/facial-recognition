@@ -71,7 +71,7 @@ def upload_image():
                      print("- Found {} at ({}, {})".format(name, left, top))
                      result = {
                        "face_found_in_image": name,
-                       "is_picture_of": left
+                       "is_picture_of": left,
                        "top":top
                      }
                      #users = json.dumps(result)
