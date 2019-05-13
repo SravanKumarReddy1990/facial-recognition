@@ -1,5 +1,17 @@
 setup:
-  config: {}
+  addons:
+    - plan: 'heroku-postgresql:hobby-dev'
+      as: DATABASE
+  config:
+    BUILDPACK_URL: 'git://github.com/dulaccc/heroku-buildpack-geodjango.git'
+    BUILD_WITH_GEO_LIBRARIES: '1'
+    GDAL_LIBRARY_PATH: /app/.apt/usr/lib/libgdal.so.1
+    GEOS_LIBRARY_PATH: /app/.apt/usr/lib/x86_64-linux-gnu/libgeos_c.so.1
+    LD_LIBRARY_PATH: >-
+      /app/.heroku/vendor/lib:/app/.heroku/python/lib:/app/.apt/usr/lib/x86_64-linux-gnu:/app/.apt/usr/lib/i386-linux-gnu:/app/.apt/usr/lib:/app/.apt/usr/lib/libblas:/app/.apt/usr/lib/lapack
 build:
-  packages:
-    - gdal-bin
+  languages:
+    - 'https://github.com/heroku/heroku-buildpack-apt'
+    - python
+run:
+  web: 'gunicorn webservice:app --timeout 2400 --keep-alive 5 --log-level debug'
