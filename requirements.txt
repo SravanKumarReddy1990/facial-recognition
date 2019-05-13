@@ -1,5 +1,6 @@
 shapely
-GDAL>=1.11.0,<2.0
+setuptools>=0.7 
+GDAL>=1.11.0
 flask
 web.py==0.40.dev0
 django
