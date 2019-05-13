@@ -1,0 +1,16 @@
+shapely
+GDAL>=1.11.0,<2.0
+flask
+web.py==0.40.dev0
+django
+gunicorn
+django-heroku
+requests
+scikit-learn
+cmake
+face_recognition_models
+Click>=6.0
+dlib>=19.3.0
+numpy
+Pillow
+scipy>=0.17.0
