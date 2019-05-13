@@ -1,5 +1,5 @@
 shapely
-osgeo3
+osgeo
 flask
 web.py==0.40.dev0
 django
