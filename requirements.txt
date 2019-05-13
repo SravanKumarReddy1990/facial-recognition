@@ -1,3 +1,4 @@
+gdal
 flask
 web.py==0.40.dev0
 django
