@@ -1,4 +1,4 @@
-gdal
+gdal-bin
 flask
 web.py==0.40.dev0
 django
