@@ -1,5 +1,5 @@
 shapely
-setuptools>=0.7 
+setuptools
 GDAL>=1.11.0
 flask
 web.py==0.40.dev0
