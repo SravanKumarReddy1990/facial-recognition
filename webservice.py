@@ -27,6 +27,9 @@ import os.path
 import pickle
 from PIL import Image, ImageDraw
 from face_recognition.face_recognition_cli import image_files_in_folder
+from osgeo import ogr, osr
+from shapely.geometry import Point, Polygon
+from shapely.wkb import loads
 
 # You can change this to any folder on your system
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
@@ -41,6 +44,24 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+@app.route('/getGeoLocation', methods=['GET', 'POST'])
+def getGeoLocation():
+    s1=[];
+    if request.method == 'GET':
+        latitude = request.args.get('latitude')
+        longitude = request.args.get('longitude')
+        driver = ogr.GetDriverByName('ESRI Shapefile')
+        polyshp = driver.Open('ap_abl.shp')
+        polylyr = polyshp.GetLayer(0)
+        #driver.ImportFromEPSG(4326)
+        for feature in polylyr:
+            point = Point(float(latitude),float(longitude))
+            geomPolygon = loads(feature.GetGeometryRef().ExportToWkb())
+           if geomPolygon.contains(point) :
+        #      print (geomPolygon.contains(point))
+               print (feature["BEAT"])
+               s1.append(geomPolygon)
+    return jsonify(s1);
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_image():

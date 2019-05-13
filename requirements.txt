@@ -1,3 +1,5 @@
+shapely
+osgeo3
 flask
 web.py==0.40.dev0
 django
