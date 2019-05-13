@@ -57,7 +57,7 @@ def getGeoLocation():
         for feature in polylyr:
             point = Point(float(latitude),float(longitude))
             geomPolygon = loads(feature.GetGeometryRef().ExportToWkb())
-           if geomPolygon.contains(point) :
+            if geomPolygon.contains(point) :
         #      print (geomPolygon.contains(point))
                print (feature["BEAT"])
                s1.append(geomPolygon)
